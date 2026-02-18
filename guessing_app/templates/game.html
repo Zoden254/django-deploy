@@ -1,0 +1,22 @@
+{% extends "master.html" %}
+
+{% block title %}Game{% endblock title %}
+
+{% block content %}
+<h1 class="text-2xl sm:text-3xl font-bold text-center bg-fuchsia-600 text-white p-5 shadow">Selected Question</h1>
+<form method="POST" action="result/" class="text-center">
+    {% csrf_token %}
+    {% for question in questions_to_user %}
+    <div class="flex-col mt-2 p-3 bg-fuchsia-300 mx-10 sm:mx-30 my-10 rounded ">
+        <p><span class="float-left text-2xl">{{ forloop.counter }}</span>{{ question.question }}</p>
+        <p>{{ error_message }}</p>
+        <input type="text" placeholder="Answer" class="border text-center rounded-2xl bg-amber-50" name="{{ question.question }}"><br>
+        
+    </div>
+    
+    {% endfor %}
+    <input type="submit" value="Submit" class="border rounded-2xl p-3 bg-blue-700 text-white hover:bg-white hover:text-blue-700">
+    
+</form>
+
+{% endblock content %}

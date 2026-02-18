@@ -1,0 +1,13 @@
+{% extends "master.html" %}
+
+{% block title %}Questions{% endblock title %}
+
+{% block content %}
+<h1>System Questions</h1>
+
+{% for question in questions %}
+<p>{{ forloop.counter }}. <strong>{{ question }}</strong></p>
+<p>{{ question.system_answer }} ({{question.points}} Points)</p><br>
+{% endfor %}
+
+{% endblock content %}
